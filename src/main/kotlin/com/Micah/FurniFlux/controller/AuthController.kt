@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("/api/v1/auth")
 class AuthController(
     private val authService: AuthService,
 ){
@@ -30,5 +30,13 @@ class AuthController(
         val response =authService.signIn(request)
 
         return ResponseEntity(response, HttpStatus.OK)
+    }
+
+    @PostMapping("/api/v1/admin/register-staff")
+    fun registerAdmin(
+        @Valid @RequestBody request: SignUpRequest
+    ): ResponseEntity<AuthResponse> {
+        val response = authService.signUp(request)
+        return ResponseEntity(response, HttpStatus.CREATED)
     }
 }

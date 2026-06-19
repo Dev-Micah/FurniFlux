@@ -4,6 +4,7 @@ import com.Micah.FurniFlux.model.Role
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
+import org.hibernate.mapping.Value
 
 data class SignUpRequest(
     @field:NotBlank(message = "Email is required")
@@ -18,7 +19,9 @@ data class SignUpRequest(
     val firstName: String,
 
     @field:NotBlank(message = "Last name is required")
-    val lastName: String
+    val lastName: String,
+
+    val role: Role? = Role.CUSTOMER
 )
 
 data class LoginRequest(

@@ -20,14 +20,14 @@ class AuthService(
 
     fun signUp(request: SignUpRequest): AuthResponse {
         if (userRepository.existsByEmail(request.email)){
-            throw ResourceAlreadyExistsException("An email address already exists")
+            throw ResourceAlreadyExistsException("This email address already exists")
         }
         val newUser = User(
             email = request.email.lowercase().trim(),
             passwordHush = passwordEncoder.encode(request.password),
             firstName = request.firstName.trim(),
             lastName = request.lastName.trim(),
-            role = Role.CUSTOMER,
+            role = request.role ?: Role.CUSTOMER,
         )
 
         val savedUser = userRepository.save(newUser)

@@ -24,7 +24,9 @@ class SecurityConfig(
             .csrf { it.disable() }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
-                auth.requestMatchers("/api/v1/auth/**").permitAll()
+                auth.requestMatchers("/api/v1/auth/signin","/api/v1/auth/signup").permitAll()
+
+                auth.requestMatchers(HttpMethod.POST, "/api/v1/admin/register-staff").hasRole("ADMIN")
 
                 auth.requestMatchers(HttpMethod.GET, "/api/v1/products/**").permitAll()
 
