@@ -1,4 +1,4 @@
-# MyExpenses Backend API
+# Furniflux Backend API
 
 A clean and scalable Spring Boot + Kotlin backend for ecommerce backend.
 
