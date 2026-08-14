@@ -28,7 +28,7 @@ pg_isready
 
 ```bash
 psql -U postgres
-CREATE DATABASE myexpenses;
+CREATE DATABASE furniflux;
 \q
 ```
 
